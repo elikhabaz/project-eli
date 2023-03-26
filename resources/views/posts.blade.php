@@ -10,14 +10,14 @@
 </head>
 <body>
 <article>
-    <h1><a href="/post"> my first post</a> </h1>
+    <h1><a href="/posts/first"> my first post</a> </h1>
     <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis recusandae, praesentium cum nostrum illum quasi, id cupiditate voluptatem odio aliquam impedit molestiae temporibus sit modi suscipit sint atque expedita explicabo.
     </p>
 </article>
 
 <article>
-    <h1><a href="/post"> my second post </a></h1>
+    <h1><a href="/posts/second"> my second post </a></h1>
     <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis recusandae, praesentium cum nostrum illum quasi, id cupiditate voluptatem odio aliquam impedit molestiae temporibus sit modi suscipit sint atque expedita explicabo.
     </p>
@@ -25,7 +25,7 @@
 
 
 <article>
-    <h1><a href="/post"> my third post </a></h1>
+    <h1><a href="/posts/third"> my third post </a></h1>
     <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis recusandae, praesentium cum nostrum illum quasi, id cupiditate voluptatem odio aliquam impedit molestiae temporibus sit modi suscipit sint atque expedita explicabo.
     </p>
