@@ -1,7 +1,12 @@
 <?php
 
+use App\Models\Post;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Catch_;
+use PhpParser\Node\Stmt\Foreach_;
+use Spatie\YamlFrontMatter\YamlFrontMatter;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,29 +20,31 @@ use PhpParser\Node\Stmt\Catch_;
 */
 
 Route::get('/posts', function () {
-    return view('posts');
+    $files= File::files(resource_path("posts/"));
+    
+    $document = [];
+        foreach ($files as $file) {
+
+            $document[] =  YamlFrontMatter::parseFile($file);# code...
+        }
+
+        
+    // return view('posts', [
+    //     'posts'=>Post::all()
+        
+    // ]);
 });
 
 
 Route::get('/posts/{post}', function ($slug) { /////در این بخش از کد ما {post} راداریم که چون داخل کرلی براکت هست هربار یک فایل را میگیرد
 ///////اسلاگ همون بخش بعد از دامنه است
-    $path = __DIR__ . "/../resources/posts/{$slug}.html";
 
-if(! file_exists($path)){
-    return redirect('/posts');///////دستور ریدایرکت
-    // abort(404);    /////اگر خواستم صفحه ۴۰۴ یا ۵۰۰ یا ۴۰۳ و یا هر چیز دیگه از این دستورز استفاده کن
-}
-$post= cache()->remember("posts.{$slug}",5,function() use ($path){
- 
-    var_dump('file_get_contents');
-    return file_get_contents($path);
+$post=Post::find($slug);
 
-});
+return view('post', [
+    'post'=>$post
+]);
 
-// $post=file_get_contents($path);
-    return view('post', [
-        'post' => $post
-    ]);
 })->where('post', '[A-z_/-]+'); ////در این بخش قراردادی تنظیم شده برای بخش اسلاگ که توی اسلاگ میتونی حروف بزرگ و کوچک و ـ و- قرار بدهی یکسری تابع عم هست whereAlpha() , whereNumber()
 
 
