@@ -60,7 +60,9 @@ public function __construct($title,$excerpt,$date,$body,$slug){
   //   });
   // }
     return static::all()->firstWhere('slug',$slug);
-    
+    //////firstwhere is a method in laravel and its get 'slug' after that go to the tabale and check data(check if 'slug' == $slug)
+    //////////when it find the value== id('slug) return it 
+    ///in this place firstwhere get id('slug) , go to the table and search when it find $slug return it!
   }
 }
 
