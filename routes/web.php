@@ -22,20 +22,18 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 Route::get('/posts', function () {
    
     $posts= Post::all();//////
-
+   
     return view('posts' , [
         'posts'=> $posts
     ]);
 });
-Route::get('/posts/{post}', function ($slug) { /////در این بخش از کد ما {post} راداریم که چون داخل کرلی براکت هست هربار یک فایل را میگیرد
+Route::get('/posts/{post}', function ($id) { /////در این بخش از کد ما {post} راداریم که چون داخل کرلی براکت هست هربار یک فایل را میگیرد
 ///////اسلاگ همون بخش بعد از دامنه است
 
-$post=Post::find($slug);
-
 return view('post', [
-    'post'=> Post::find($slug)
+    'post'=> Post::findOrFail($id)
 ]);
 
-})->where('post', '[A-z_/-]+'); ////در این بخش قراردادی تنظیم شده برای بخش اسلاگ که توی اسلاگ میتونی حروف بزرگ و کوچک و ـ و- قرار بدهی یکسری تابع عم هست whereAlpha() , whereNumber()
+}); ////در این بخش قراردادی تنظیم شده برای بخش اسلاگ که توی اسلاگ میتونی حروف بزرگ و کوچک و ـ و- قرار بدهی یکسری تابع عم هست whereAlpha() , whereNumber()
 
 
