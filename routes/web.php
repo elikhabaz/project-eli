@@ -27,11 +27,11 @@ Route::get('/posts', function () {
         'posts'=> $posts
     ]);
 });
-Route::get('/posts/{post}', function ($id) { /////در این بخش از کد ما {post} راداریم که چون داخل کرلی براکت هست هربار یک فایل را میگیرد
+Route::get('/posts/{post}', function (Post $post) { /////در این بخش از کد ما {post} راداریم که چون داخل کرلی براکت هست هربار یک فایل را میگیرد
 ///////اسلاگ همون بخش بعد از دامنه است
 
 return view('post', [
-    'post'=> Post::findOrFail($id)
+    'post'=> $post
 ]);
 
 }); ////در این بخش قراردادی تنظیم شده برای بخش اسلاگ که توی اسلاگ میتونی حروف بزرگ و کوچک و ـ و- قرار بدهی یکسری تابع عم هست whereAlpha() , whereNumber()
