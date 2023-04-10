@@ -1,7 +1,7 @@
 <?php
 
 use App\Models\Post;
-
+use App\Models\Cat;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Catch_;
@@ -32,6 +32,13 @@ return view('post', [
     'post'=> $post
 ]);
 
+});
+
+Route::get('categoris/{cat:slug}', function (Cat $cat) {
+   
+    return view('posts' , [
+        'posts'=> $cat->posts
+    ]);
 });
 
 
