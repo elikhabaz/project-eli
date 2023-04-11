@@ -19,7 +19,7 @@
     </a>
 </h1>
     <p> 
-        <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
+      write <a href="#">{{$post->user->name}}</a> <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
     </p>
         <p>
            {!!$post->body!!} 

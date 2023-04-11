@@ -16,8 +16,9 @@ class CreatPostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
            $table->id(); 
            $table->foreignId('cat_id');
+           $table->foreignId('user_id');
            $table->string('title');
-           $table->string('slug')->unique();;
+           $table->string('slug')->unique();
            $table->text('excerpt');
            $table->text('body');
            $table->string('date');
@@ -33,7 +34,7 @@ class CreatPostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('posts');
 
     }
 }
