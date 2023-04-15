@@ -2,6 +2,7 @@
 
 use App\Models\Post;
 use App\Models\Cat;
+use App\Models\User;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Catch_;
@@ -24,7 +25,7 @@ Route::get('/posts', function () {
     $posts= Post::all();//////
    
     return view('posts' , [
-        'posts'=> $posts
+        'posts'=> Post::with('cat', 'author')->get()
     ]);
 });
 Route::get('/posts/{post}', function (Post $post) { 
@@ -40,5 +41,15 @@ Route::get('categoris/{cat:slug}', function (Cat $cat) {
         'posts'=> $cat->posts
     ]);
 });
+
+Route::get('authors/{author:username}', function (User $author) {
+   
+    return view('posts' , [
+        'posts'=> $author->posts
+    ]);
+});
+
+
+
 
 

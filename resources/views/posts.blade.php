@@ -18,8 +18,11 @@
        {!!$post->title!!} 
     </a>
 </h1>
+    <!-- <p> 
+      write<a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
+    </p> -->
     <p> 
-      write <a href="#">{{$post->user->name}}</a> <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
+        <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a>in <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
     </p>
         <p>
            {!!$post->body!!} 

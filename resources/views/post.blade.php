@@ -15,8 +15,12 @@
        <h1>
          {!!$post->title!!} 
         </h1>
-        <p> 
-        <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
+      <!-- <p> 
+        <a href="#">{{$post->author->name}}</a>in <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
+    </p>   -->
+
+    <p> 
+        <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a>in <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
     </p>
        <p> 
         {!!$post->body!!} 

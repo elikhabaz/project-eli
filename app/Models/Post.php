@@ -17,8 +17,8 @@ class Post extends Model
     public function cat(){
         return $this->belongsTo(Cat::class);
     }
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function author(){
+        return $this->belongsTo(User::class , 'user_id');
     }
 }
 
