@@ -20,12 +20,13 @@
 
                             <div class="mt-4">
                                 <h1 class="text-3xl">
+									<a href="/posts/{{$post->slug}}"></a>
 									{{ $post->title }}
 									
                                 </h1>
 
                                 <span class="mt-2 block text-gray-400 text-xs">
-                                        Published <time>1 day ago</time>
+                                        Published <time>{{ $post->created_at->diffForHumans() }} </time>
                                     </span>
                             </div>
                         </header>
@@ -42,7 +43,7 @@
 
                         <footer class="flex justify-between items-center mt-8">
                             <div class="flex items-center text-sm">
-                                <img src="./images/lary-avatar.svg" alt="Lary avatar">
+                                <img src="/images/lary-avatar.svg" alt="Lary avatar">
                                 <div class="ml-3">
                                     <h5 class="font-bold">{{$post->author->name}}</h5>
                                     <h6>Mascot at Laracasts</h6>
