@@ -21,35 +21,28 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 */
 
 Route::get('/posts', function () {
-   
-    $posts= Post::all();//////
-   
-    return view('posts' , [
-        'posts'=> Post::with('cat', 'author')->get()
+    $posts = Post::all(); //////
+    return view('posts', [
+        'posts' => Post::with('cat', 'author')->get()
     ]);
 });
-Route::get('/posts/{post}', function (Post $post) { 
-return view('post', [
-    'post'=> $post
-]);
 
+Route::get('/posts/{post}', function (Post $post) {
+    return view('post', [
+        'post' => $post
+    ]);
 });
 
 Route::get('categoris/{cat:slug}', function (Cat $cat) {
-   
-    return view('posts' , [
-        'posts'=> $cat->posts
+
+    return view('posts', [
+        'posts' => $cat->posts
     ]);
 });
 
 Route::get('authors/{author:username}', function (User $author) {
-   
-    return view('posts' , [
-        'posts'=> $author->posts
+
+    return view('posts', [
+        'posts' => $author->posts
     ]);
 });
-
-
-
-
-

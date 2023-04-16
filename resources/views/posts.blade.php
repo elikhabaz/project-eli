@@ -1,33 +1,22 @@
-<!DOCTYPE html>
-<htm l lang="en">
-<head>
-    <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/app.css">
 
-       <!-- <script src="/app.js"></script> -->
-        <title>my blog</title>
+<x-layout>
    
-</head>
-<body> 
-    
+    @include('_indexheader')
+        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        
+            <x-single :post="$posts" />
+               
+            <!-- <div class="lg:grid lg:grid-cols-2">
+            <x-poststyle/>
+            <x-poststyle />
+              
+            </div>
 
-@foreach($posts as $post) 
-    <article>
-        <h1><a href="/posts/{{$post->slug}} ">            
-       {!!$post->title!!} 
-    </a>
-</h1>
-    <!-- <p> 
-      write<a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
-    </p> -->
-    <p> 
-        <a href="/authors/{{$post->author->username}}">{{$post->author->name}}</a>in <a href="/categoris/{{$post->cat->slug}}"> {{$post->cat->name}} </a>
-    </p>
-        <p>
-           {!!$post->body!!} 
-        </p>
-    </article>
-@endforeach 
-</body>
-</html>
+            <div class="lg:grid lg:grid-cols-3">
+                <x-poststyle />
+                <x-poststyle />
+                <x-poststyle/>
+
+            </div> -->
+        </main>
+</x-layout>

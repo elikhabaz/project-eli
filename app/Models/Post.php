@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
     // protected $fillable = ['title'];
     protected $guarded = [];
-
+    public static $post;
     public function getRouteKeyName(){//////I used it cause I want get post with id & slug
         return 'slug';
     }
@@ -20,5 +20,7 @@ class Post extends Model
     public function author(){
         return $this->belongsTo(User::class , 'user_id');
     }
+
+  
 }
 
