@@ -1,19 +1,13 @@
 
 <x-layout>
    
-    @include('_indexheader')
-        <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">       
-            <x-single :post="$posts[0]" />
-               
-            <!-- <div class="lg:grid lg:grid-cols-2">
-            <x-poststyle/>
-            <x-poststyle />              
-            </div>
+@include('_indexheader')
+    <main class="max-w-6xl mx-auto mt-6 lg:mt-20 space-y-6">
+        @if($posts->count())    <!--if we have posts show that else we haven't any posts show <p>  -->       
+        <x-gride-post :posts="$posts" />
+            @else
+        <p>there is no post</p>
+        @endif
+    </main>
 
-            <div class="lg:grid lg:grid-cols-3">
-                <x-poststyle />
-                <x-poststyle />
-                <x-poststyle/>
-            </div> -->
-        </main>
 </x-layout>

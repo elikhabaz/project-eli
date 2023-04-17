@@ -25,7 +25,7 @@ Route::get('/posts', function () {
     return view('posts', [
         'posts' => Post::with('cat', 'author')->get()
     ]);
-});
+})->name('posts');
 
 Route::get('/posts/{post}', function (Post $post) {
     return view('post', [
