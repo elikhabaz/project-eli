@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Postcontroller;
 use App\Models\Post;
 use App\Models\Cat;
 use App\Models\User;
@@ -8,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Catch_;
 use PhpParser\Node\Stmt\Foreach_;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Builder;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,26 +22,12 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/// how can I Use cntrolleres? Like thissss
+Route::get('/posts', [Postcontroller::class , 'index'])->name('posts');
 
-Route::get('/posts', function () {
- 
-    $posts = Post::all(); //////
-    return view('posts', [
-        'posts' => Post::latest()->get(),
-        'categoris'=> Cat::all()
-    
+Route::get('/posts/{post}', [Postcontroller::class , 'show']);
 
-    ]);
-    
-})->name('posts');
 
-Route::get('/posts/{post}', function (Post $post) {
-    return view('post', [
-        'post' => $post
-              
-
-    ]);
-});
 
 Route::get('categoris/{cat:slug}', function (Cat $cat) {
    
@@ -47,7 +36,6 @@ Route::get('categoris/{cat:slug}', function (Cat $cat) {
         'posts' => $cat->posts,
         'currentcat'=>$cat,
         'categoris'=> Cat::all()    
-
 
     ]);
 
