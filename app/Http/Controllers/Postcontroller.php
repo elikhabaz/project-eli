@@ -16,14 +16,13 @@ class Postcontroller extends Controller
     public function index()
     {
         /* I create this controller for arrangement search-box */
-        $posts = Post::latest()->filter()->get();
         return view('posts', [
-            'posts' => $posts,
+            'posts' => $posts = Post::latest()->filter(request(['search','cat']))->get(),
             'categoris' => Cat::all()
         ]);
     }
 
-    
+
 
     public function show(Post $post)
     {

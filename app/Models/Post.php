@@ -14,21 +14,33 @@ class Post extends Model
     protected $guarded = [];
     public static $post;
 
-    public function scopeFilter($query){
-        
-        if (request('search')) {
-            $query->where('title', 'like', '%' . request('search') . '%')
-                  ->orWhere('body', 'like', '%' . request('search') . '%');
-        }
+    public function scopeFilter($query, array $filters)
+    {
+        $query->when($filters['search'] ?? false, function ($query , $search) {
+            $query
+                    ->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('body', 'like', '%' . $search . '%');
+        });
+
+        $query->when($filters['cat'] ?? false, function ($query , $cat) {
+            $query
+                ->whereExists(fn($query)=>$query->from('cat')
+                    ->where('cat.id', 'post.cat_id')
+                    ->orWhere('cat.slug', $cat)
+               );
+            
+        });
     }
-    public function getRouteKeyName(){//////I used it cause I want get post with id & slug
+    public function getRouteKeyName()
+    { //////I used it cause I want get post with id & slug
         return 'slug';
     }
-    public function cat(){
+    public function cat()
+    {
         return $this->belongsTo(Cat::class);
     }
-    public function author(){
-        return $this->belongsTo(User::class , 'user_id');
+    public function author()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
-
