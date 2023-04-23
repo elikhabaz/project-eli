@@ -8,26 +8,8 @@
            
             <div class="space-y-2 lg:space-y-0 lg:space-x-4 mt-8">
 
-                <div class="relative flex lg:inline-flex items-center bg-gray-100 rounded-xl">
-                         <x-dropdown >
-                          
-                            <x-slot name="trigger">
-                            <button class="py-2 pl-3 pr-9 text-sm  font-semibold bg-gray-100 lg:w-32 text-left flex lg:inline-flex w-full rounded-xl" >
-                                 {{isset($currentcat) ? $currentcat->name : 'category'}}
-
- <!-- I try to make component for this icon from button and that name is icon.blade -->                                
-                                        <x-icon name="down-arrow" class="absolute pointer-events-none" style="right: 12px;" />
-                                        
-                                  </button>
-                            </x-slot>
- <!-- I try to make one component for drop down style button that name is dropdown.style.blade  -->
-             <x-dropdown-style href="/posts">All</x-dropdown-style>
-                                     @foreach($categoris as $cat)  
-                                          <x-dropdown-style href="/categoris/{{$cat->slug}}"
-                                            :active="true"
-                                            >{{$cat->name}}</x-dropdown-style>
-                                      @endforeach
-                    </x-dropdown>
+                <div class="relative lg:inline-flex bg-gray-100 rounded-xl">
+                         <x-category-dropdown />
                 </div>
          
 

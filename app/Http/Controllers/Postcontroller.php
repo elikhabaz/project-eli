@@ -16,9 +16,8 @@ class Postcontroller extends Controller
     public function index()
     {
         /* I create this controller for arrangement search-box */
-        return view('posts', [
-            'posts' => $posts = Post::latest()->filter(request(['search','cat']))->get(),
-            'categoris' => Cat::all()
+        return view('posts.index', [
+            'posts' => $posts = Post::latest()->filter(request(['search','cat']))->get()
         ]);
     }
 
@@ -26,8 +25,8 @@ class Postcontroller extends Controller
 
     public function show(Post $post)
     {
-        return view('post', [
+        return view('posts.show', [
             'post' => $post
-        ]);
+                ]);
     }
 }
