@@ -37,6 +37,7 @@ Route::get('categoris/{cat:slug}', function (Cat $cat) {
     ]);
 
 });
+
 Route::get('authors/{author:username}', function (User $author) {
 
     return view('posts.index', [
