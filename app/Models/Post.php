@@ -30,6 +30,13 @@ class Post extends Model
                );
             
         });
+        $query->when($filters['author'] ?? false, function ($query , $author) {
+            $query
+                    ->whereHas('author', fn($query)=>
+                    $query->Where('username', $author)
+               );
+            
+        });
     }
     public function getRouteKeyName()
     { //////I used it cause I want get post with id & slug

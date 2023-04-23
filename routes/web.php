@@ -26,10 +26,20 @@ use Illuminate\Database\Eloquent\Builder;
 Route::get('/posts', [Postcontroller::class , 'index'])->name('posts');
 Route::get('/posts/{post:slug}', [Postcontroller::class , 'show']);
 
+Route::get('categoris/{cat:slug}', function (Cat $cat) {
 
+    return view('posts.index', [
+
+        'posts' => $cat->posts,
+        'currentcat'=>$cat,
+        'categoris'=> Cat::all()    
+
+    ]);
+
+});
 Route::get('authors/{author:username}', function (User $author) {
 
-    return view('posts', [
+    return view('posts.index', [
         'posts' => $author->posts,   
         'categoris'=> Cat::all()
 

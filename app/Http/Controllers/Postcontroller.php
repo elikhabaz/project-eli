@@ -17,7 +17,7 @@ class Postcontroller extends Controller
     {
         /* I create this controller for arrangement search-box */
         return view('posts.index', [
-            'posts' => $posts = Post::latest()->filter(request(['search','cat']))->get()
+            'posts' => $posts = Post::latest()->filter(request(['search','cat','author']))->get()
         ]);
     }
 
