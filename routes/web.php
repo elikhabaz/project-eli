@@ -23,19 +23,19 @@ use Illuminate\Database\Eloquent\Builder;
 |
 */
 /// how can I Use cntrolleres? Like thissss
-Route::get('/posts', [Postcontroller::class , 'index'])->name('posts');
+Route::get('/posts', [Postcontroller::class, 'index'])->name('posts');
 
-Route::get('/posts/{post}', [Postcontroller::class , 'show']);
+Route::get('/posts/{post}', [Postcontroller::class, 'show']);
 
 
 
 Route::get('categoris/{cat:slug}', function (Cat $cat) {
-   
+
     return view('posts', [
-       
+
         'posts' => $cat->posts,
-        'currentcat'=>$cat,
-        'categoris'=> Cat::all()    
+        'currentcat' => $cat,
+        'categoris' => Cat::all()
 
     ]);
 
@@ -45,7 +45,10 @@ Route::get('authors/{author:username}', function (User $author) {
 
     return view('posts', [
         'posts' => $author->posts,
-        'categoris'=> Cat::all()       
+        'categoris' => Cat::all()
 
     ]);
+});
+Route::get('/f', function () {
+    phpinfo();
 });
