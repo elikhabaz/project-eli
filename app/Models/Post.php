@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Builder;
 
+
 class Post extends Model
 {
     use HasFactory;
@@ -18,7 +19,7 @@ class Post extends Model
     {
         $query->when($filters['search'] ?? false, function ($query , $search) {
             $query->where(fn($query)=>
-                $query->where('title', 'like', '%' . $search . '%')
+            $query->where('title', 'like', '%' . $search . '%')
                     ->orWhere('body', 'like', '%' . $search . '%')
              );
         });
