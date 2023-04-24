@@ -23,11 +23,11 @@ Route::get('/posts/{post}', [Postcontroller::class , 'show']);
 
 
 
-Route::get('categoris/{cat:slug}', function (Cat $cat) {
-    return view('posts.index', [
-        'posts' => $cat->posts,
-    ]);
-});
+// Route::get('categoris/{cat:slug}', function (Cat $cat) {
+//     return view('posts.index', [
+//         'posts' => $cat->posts,
+//     ]);
+// });
 
 Route::get('authors/{author:username}', function (User $author) {
     return view('posts.index', [

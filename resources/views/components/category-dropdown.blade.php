@@ -15,7 +15,8 @@
         href="/posts">All</x-dropdown-style>
             
     @foreach($categoris as $cat)  
-        <x-dropdown-style href="categoris/{{$cat->slug}}">{{$cat->name}}</x-dropdown-style>
+
+        <x-dropdown-style href="/posts?cat={{$cat->slug}}" :active='request()->is("/categoris/{$cat->slug}")'>{{$cat->name}}</x-dropdown-style>
     @endforeach
 
 </x-dropdown>
