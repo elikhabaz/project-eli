@@ -17,16 +17,24 @@ class Post extends Model
     public function scopeFilter($query, array $filters)
     {
         $query->when($filters['search'] ?? false, function ($query , $search) {
-            $query
-                    ->where('title', 'like', '%' . $search . '%')
-                    ->orWhere('body', 'like', '%' . $search . '%');
+            $query->where(fn($query)=>
+                $query->where('title', 'like', '%' . $search . '%')
+                    ->orWhere('body', 'like', '%' . $search . '%')
+             );
         });
 
         $query->when($filters['cat'] ?? false, function ($query , $cat) {
             $query
-                ->whereExists(fn($query)=>$query->from('cat')
-                    ->where('cat.id', 'post.cat_id')
-                    ->orWhere('cat.slug', $cat)
+                ->whereHas('cat',fn($query)=>
+                $query->where('slug' , $cat)
+                
+               );
+            
+        });
+        $query->when($filters['author'] ?? false, function ($query , $author) {
+            $query
+                    ->whereHas('author', fn($query)=>
+                    $query->Where('username', $author)
                );
             
         });
