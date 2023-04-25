@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Http\Controllers;
+use App\Models\User;
+use Illuminate\Http\Request;
+use PharIo\Manifest\Email;
+
+class RegisterContriller extends Controller
+{
+
+    public function create(){
+        return view('register.create');
+    }
+
+
+    public function store(){
+        //////validate user
+        $attributes=request()->validate([
+            'name'=>'required|min:5',
+            'username'=>'required|min:5',
+            'email'=>'required|email|max:255',
+            'password'=>'required|min:7|max:255',
+        ]);
+        $attributes['password']=bcrypt($attributes['password']); /////hash password
+        User::create($attributes);   /////make user
+        return redirect('/');
+    }
+   
+}

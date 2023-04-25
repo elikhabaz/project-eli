@@ -5,6 +5,8 @@ use App\Models\Cat;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Postcontroller;
 use Illuminate\Database\Eloquent\Collection;
+use App\Http\Controllers\RegisterContriller;
+
 
 
 /*
@@ -18,8 +20,12 @@ use Illuminate\Database\Eloquent\Collection;
 |
 */
 /// how can I Use cntrolleres? Like thissss
-Route::get('/posts', [Postcontroller::class , 'index'])->name('posts');
+Route::get('/', [Postcontroller::class , 'index'])->name('posts');
 Route::get('/posts/{post}', [Postcontroller::class , 'show']);
+
+Route::get('register', [RegisterContriller::class , 'create']);
+
+Route::Post('register', [RegisterContriller::class , 'store']);
 
 
 
@@ -29,11 +35,11 @@ Route::get('/posts/{post}', [Postcontroller::class , 'show']);
 //     ]);
 // });
 
-Route::get('authors/{author:username}', function (User $author) {
-    return view('posts.index', [
-        'posts' => $author->posts
-    ]);
-});
+// Route::get('authors/{author:username}', function (User $author) {
+//     return view('posts.index', [
+//         'posts' => $author->posts
+//     ]);
+// });
 // Route::get('/f', function () {
 //     phpinfo();
 // });
