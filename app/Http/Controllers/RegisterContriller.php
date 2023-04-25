@@ -18,12 +18,13 @@ class RegisterContriller extends Controller
         //////validate user
         $attributes=request()->validate([
             'name'=>'required|min:5|max:255',
-            'username'=>['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore('username')], /////cause I want I've uniqe username
-            'email'=>['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore('email')], /////cause I want I've uniqe email
+            'username'=>['required', 'string', 'max:255', Rule::unique('users')->ignore('username')], /////cause I want I've uniqe username
+            'email'=>['required', 'string', 'max:255', Rule::unique('users')->ignore('email')], /////cause I want I've uniqe email
             'password'=>'required|min:7|max:255',
         ]);
         $attributes['password']=bcrypt($attributes['password']); /////hash password
         User::create($attributes);   /////make user
+        session()->flash('success','your account has create');
         return redirect('/');
     }
    
