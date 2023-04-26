@@ -16,17 +16,27 @@
                 </a>
             </div>
 
-            <div class="mt-8 md:mt-0">
-                <a href="{{route('posts')}}" class="bg-purple-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5 text-xs font-bold uppercase">Home Page</a>
-
-                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                    Subscribe for Updates
-                </a>
-
+            <div class="mt-8 md:mt-0 flex item-center">
+            @auth
+            <span class=" text-l font-bold uppercase ml-8">
+                    wellcome  {{auth()->user()->name}}
+                </span>
+                <form method="Post" action="/logout" calss="bg-blue-500 text-l font-bold uppercase ml-8">
+                    @csrf
+                    <button type="submit" class="ml-5">logout</button>
+                </form>
+                @else
                 <a href="/register" class="bg-green-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
                     Register
                 </a>
-
+                <a href="/login" class="bg-pink-400 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    login
+                </a>
+                @endauth
+                <a href="#" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
+                    Subscribe for Updates
+                </a>
+           
             </div>
         </nav>    
 		   

@@ -23,8 +23,13 @@ class RegisterContriller extends Controller
             'password'=>'required|min:7|max:255',
         ]);
         $attributes['password']=bcrypt($attributes['password']); /////hash password
-        User::create($attributes);   /////make user
+
+        $user=User::create($attributes);   /////make user
+
+        auth()->login($user); ///when user want login
+
         session()->flash('success','your account has create');
+
         return redirect('/');
     }
    
