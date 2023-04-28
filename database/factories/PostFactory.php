@@ -18,11 +18,11 @@ class PostFactory extends Factory
         return [
             'user_id'=>User::factory(),
             'cat_id'=>Cat::factory(),
-            'title'=>$this->faker->sentence,
-            'slug'=>$this->faker->slug,
-            'excerpt'=>$this->faker->sentence,
-            'body'=>$this->faker->paragraph,
-            'date'=>$this->faker->word
+            'title'=>$this->faker->sentence(),
+            'slug'=>$this->faker->slug(),
+            'excerpt'=>$this->faker->sentence(),
+            'body'=>$this->faker->paragraph(),
+            'date'=>$this->faker->word()
         ];
     }
 }

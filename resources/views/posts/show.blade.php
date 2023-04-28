@@ -48,7 +48,35 @@
                     <div class="space-y-4 lg:text-lg leading-loose">
                         {{$post->body}}
                     </div>
+
                 </div>
+                    <section class=" col-span-8 col-start-5  mt-10 space-y-10">
+                        <x-penal >
+                    <form method="POST" action="#" >
+                        @csrf
+                        <header calss="flex item-center">
+                        <img src="https://i.pravatar.cc/40?u{{auth()->id()}}" width="40px" hight="40px" class="rounded-full">
+                    
+                            <h2 class="ml-4">
+                                  want to participate?
+                            </h2>
+                        </header>
+                            <div class="mt-8">
+                                <textarea name="body" class="w-full text-sm" rows="5" placeholder="write in hear"></textarea>
+                            </div>
+                            <div class="flex justify-end mt10 border-t">
+                                <button type="submit" class="bg-blue-500 text-white uppercase font-semibold text-xs py-2 px-10 rounded-xl hover:bg-blue-600">
+                                    post
+                                </button>
+                            </div>
+                        </form>
+                        </x-penal>
+                        @foreach($post->comments as $comment)
+                        <x-comment />
+                        @endforeach
+                    </section>
+
+</div>
             </article>
         </main>
     </section>
