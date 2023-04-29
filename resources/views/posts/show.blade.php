@@ -51,8 +51,8 @@
 
                 </div>
                     <section class=" col-span-8 col-start-5  mt-10 space-y-10">
-                        <x-penal >
-                    <form method="POST" action="#" >
+                <x-penal >
+                    <form method="POST" action="/posts/{{$post->slug}}/comment" >
                         @csrf
                         <header calss="flex item-center">
                         <img src="https://i.pravatar.cc/40?u{{auth()->id()}}" width="40px" hight="40px" class="rounded-full">
@@ -71,9 +71,12 @@
                             </div>
                         </form>
                         </x-penal>
-                        @foreach($post->comments as $comment)
-                        <x-comment />
-                        @endforeach
+
+                       
+                           @foreach($post->comments as $comment)
+                              <x-comment :comment="$comment"/>
+                           @endforeach
+
                     </section>
 
 </div>

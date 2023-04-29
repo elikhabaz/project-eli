@@ -1,6 +1,5 @@
                     
 @props(['comment'])
-                    
                     <article class="flex  p-6 bg-purple-100 rounded-xl space-x-4">
                         <div class="flex-shrink-0">
                             <img src="https://i.pravatar.cc/70" width="70px" hight="70px" class="rounded-xl">

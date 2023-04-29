@@ -22,6 +22,9 @@ class Postcontroller extends Controller
 
     public function show(Post $post)
     {
+        // foreach($post->comment as $com){
+        //     dd($com->author);
+        // }
         return view('posts.show', [
             'post' => $post
                 ]);
