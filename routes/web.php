@@ -1,16 +1,20 @@
 <?php
 
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SessionController;
 use App\Models\User;
 use App\Models\Cat;
 use App\Models\Comment;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Postcontroller;
 use Illuminate\Database\Eloquent\Collection;
 use App\Http\Controllers\RegisterContriller;
+use Illuminate\Validation\ValidationException;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Contracts\Service\Attribute\Required;
+use App\Services\Newsletter;
 
 
 
@@ -27,31 +31,9 @@ use Symfony\Contracts\Service\Attribute\Required;
 */
 /// how can I Use cntrolleres? Like thissss
 
-Route::post('newsletter', function () {
+Route::post('newsletter', NewsletterController::class);
 
 
-	request()->validate(['email'=>'Required|email']);
-
-	$mailchimp = new \MailchimpMarketing\ApiClient();
-
-
-	$mailchimp->setConfig([
-		'apiKey' => config('services.mailchimp.key'),
-		'server' => 'us9'
-	]);
-	try{
-		$response = $mailchimp->lists->addListMember('e95d9d94fd', [
-			'email_address' =>request('email'),
-			'status'=>'subscribed'
-		]);
-	}catch(\Exception $e){
-		throw Illuminate\Validation\ValidationException::withMessages([
-			'email' =>'we cant add it'
-		]);
-	}
-	
-    return redirect("/")->echo('we love you!');
-});
 
 
 
@@ -65,6 +47,11 @@ Route::get('register', [RegisterContriller::class, 'create'])->middleware('guest
 
 Route::post('register', [RegisterContriller::class, 'store'])->middleware('guest');
 ////////middelware is a method for user reguest and this method have ti login protected 
+
+Route::get('/admin/posts/create',[Postcontroller::class , 'create'])->middleware('admin');
+Route::post('/admin/posts',[Postcontroller::class , 'store'])->middleware('admin');
+
+
 
 Route::get('login', [SessionController::class, 'create'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store'])->middleware('guest');

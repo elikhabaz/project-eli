@@ -14,6 +14,12 @@
                 <a href="{{route('posts')}}">
                     <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
                 </a>
+
+                <form method="get" action="/admin/posts/create" >
+                    @csrf
+                    <button type="submit" class="ml-5 bg-green-500 rounded-xl p-1 mt-8 text-xs font-semibold text-white uppercase py-3 px-5">AdminPanel</button>
+                </form>
+                
             </div>
 
             <div class="mt-8 md:mt-0 flex item-center">
@@ -58,11 +64,13 @@
                             </label>
 
                           <div>
-                          <input id="email" type="text" placeholder="Your email address"
+                          <input name="email" id="email" type="text" placeholder="Your email address"
                                    class="lg:bg-transparent py-2 lg:py-0 pl-4 focus-within:outline-none">
-                                   @error('email')
-                                   <span calss="text-red-500 text-xl">{{$message}}</span> 
-                                @enderror
+                                    @error('email')
+                                        <span calss="text-red-500 text-xl">
+                                            {{ $message }}
+                                        </span> 
+                                    @enderror
                           </div>
                         </div>
                         <button type="submit"
