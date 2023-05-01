@@ -39,13 +39,13 @@
 
 
 				<div class="mb-6">
-					<lable class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-5" for="file">
+					<lable class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-5" for="img">
 						img
 					</lable>
 					<input class="border border-gray-400 "
 						type="file"
-						name="file"
-						id="file"
+						name="img"
+						id="img"
 						value=""
 						required>
 
