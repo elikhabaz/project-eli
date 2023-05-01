@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\SessionController;
@@ -48,8 +49,23 @@ Route::get('register', [RegisterContriller::class, 'create'])->middleware('guest
 Route::post('register', [RegisterContriller::class, 'store'])->middleware('guest');
 ////////middelware is a method for user reguest and this method have ti login protected 
 
-Route::get('/admin/posts/create',[Postcontroller::class , 'create'])->middleware('admin');
-Route::post('/admin/posts',[Postcontroller::class , 'store'])->middleware('admin');
+
+
+
+///admin
+Route::get('/admin/posts/create',[AdminPostController::class , 'create'])->middleware('admin');
+
+Route::post('/admin/posts',[AdminPostController::class , 'store'])->middleware('admin');
+
+Route::get('/admin/posts',[AdminPostController::class , 'index'])->middleware('admin');
+
+Route::get('/admin/posts/{post}/edit',[AdminPostController::class , 'edit'])->middleware('admin');
+
+Route::patch('/admin/posts/{post}',[AdminPostController::class , 'update'])->middleware('admin');
+Route::delete('/admin/posts/{post}',[AdminPostController::class , 'distroy'])->middleware('admin');
+
+
+
 
 
 

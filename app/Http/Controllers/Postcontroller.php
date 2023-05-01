@@ -9,8 +9,6 @@ use Illuminate\Validation\Rule;
 
 
 
-
-
 class Postcontroller extends Controller
 {
     public function index()
@@ -32,26 +30,6 @@ class Postcontroller extends Controller
                 ]);
     }
 
-    public function create(){
-       
-        return view('posts.create');
-    }
-
-    public function store(){
-        $attributes=request()->validate([
-           'title' =>'required',
-           'img' =>'required|image',
-           'slug' =>['required' , Rule::unique('posts' , 'slug')],
-           'excerpt' => 'required',
-           'body' => 'required',
-           'cat_id' => ['required' , Rule::exists('cats' , 'id')]
-        ]);
-        $attributes['user_id'] = auth()->id();
-        $attributes['img'] = request()->file('img')->store('imgs');///برای تابع استور لازمه در فایل سیستم دیفالت را پابلیک تعریف کنیم و اینکه توی دات ای ان ور هم کلید را از لوکال به پابلیک تغییر بدهیم
-        $attributes['date'] = Carbon::now();
-        $r=Post::create($attributes);
-       
-
-        return redirect('/');
-    }
+  
+   
 }
