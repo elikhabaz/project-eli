@@ -10,8 +10,7 @@
 					<a href="/posts/{{ $post->slug }}">
 						{{ $post->title }}
 					</a>
-				  
-				  
+
 				</div>
 			  </div>
 			  <div class="hidden sm:flex sm:flex-col sm:items-end">

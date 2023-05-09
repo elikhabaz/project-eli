@@ -8,8 +8,6 @@
 				<x-form.input name="title" :value="$post->title" />
 				<x-form.input name="slug" :value="$post->slug"/>
 				<x-form.input name="img" type="file" :value="$post->img"/>
-	
-	
 				<x-form.texterea name="excerpt"/>
 				<x-form.texterea name="body"/>
 	
